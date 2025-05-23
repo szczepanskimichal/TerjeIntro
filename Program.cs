@@ -6,15 +6,30 @@ namespace ShowPlaces
     {
         static void Main(string[] args)
         {
-            ShowSeparator();
-            var odstep = 20;
+
+
             //var label = "Navn";
             //var fieldValue = "Stavern";
-            ShowFieldNameAndValue("Navn", odstep, "Stavern");
-            ShowFieldNameAndValue("Kommune", odstep, "Larvik");
-            ShowFieldNameAndValue("Fylke", odstep, "Vestfold");
+            var place = "Stavern";
+            var kommune = "Larvik";
+            var fylke = "Vestfold";
+            ShowPlace("Fall", "Søndre Land", "Innlandet");
+            ShowPlace("Stavern", "Larvik", "Vestfold");
+            ShowPlace("Oslo", "Oslo", "Oslo");
+            ShowPlace("Bergen", "Bergen", "Vestland");
+        }
 
-            ShowSeparator();
+        private static void ShowPlace(string place, string kommune, string fylke)
+        {
+            var odstep = 8;
+            ShowSeparatorRow(8);
+            ShowFieldNameAndValue("Navn", odstep, place);
+
+            ShowFieldNameAndValue("Kommune", odstep, kommune);
+            ShowFieldNameAndValue("Fylke", odstep, fylke);
+
+
+            ShowSeparatorRow(odstep);
         }
 
         static void ShowFieldNameAndValue(string label, int odstep, string fieldValue)
@@ -23,9 +38,10 @@ namespace ShowPlaces
             Console.WriteLine(" " + label + " : " + "".PadLeft(odstep, ' ') + fieldValue);
         }
 
-        static void ShowSeparator()
+        static void ShowSeparatorRow(int odstep)
         {
-            Console.WriteLine("************************");
+            odstep += 20;
+            Console.WriteLine(string.Empty.PadLeft(odstep, '*'));
         }
     }
 }
